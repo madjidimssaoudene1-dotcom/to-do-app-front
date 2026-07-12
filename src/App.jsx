@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import Header from "./components/Header";
-import MainApp from "./components/MainApp";
 import { useSelector } from "react-redux";
-import { Router } from "react-router";
-import { Routes } from "react-router";
+import Routers from "./routes";
 
 export default function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -22,10 +19,7 @@ export default function App() {
         backgroundPosition: "top center",
       }}
     >
-      <Routes>
-
-        
-      </Routes>
+      <Routers />
     </div>
   );
 }

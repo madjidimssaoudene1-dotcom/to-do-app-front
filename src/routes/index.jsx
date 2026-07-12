@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router";
 import Login from "../components/Login";
-import Register from "../components/REgister";
+import Register from "../components/Register";
 import Header from "../components/Header";
 import MainApp from "../components/MainApp";
 import { useAuth } from "../hooks/useAuth";

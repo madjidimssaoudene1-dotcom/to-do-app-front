@@ -4,17 +4,25 @@ import EditModal from "./EditModal";
 import TodoItem from "./TodoItem";
 import SortDropdown from "./SortDropdown";
 import SearchBar from "./SearchBar";
-import useTodos from "../hooks/useTodos";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateTodo } from "../api/endpoints/todos";
 
-export default function TodoList() {
-  const { todos, editTodo } = useTodos();
+export default function TodoList({ todos, isLoading, isFetching }) {
+  const queryClient = useQueryClient();
+
+  // const { editTodo } = useTodos();
   const [editText, setEditText] = useState({ id: null, text: "" });
   const dialogRef = useRef(null);
+
+  const { mutate: editTodo } = useMutation({
+    mutationFn: ({ id, text }) => updateTodo(id, { text }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["todos"] }),
+  });
 
   const saveEdit = () => {
     if (editText.text.trim() === "") return;
 
-    editTodo(editText.id, editText.text);
+    editTodo({ id: editText.id, text: editText.text });
     dialogRef.current?.close();
   };
 
@@ -34,12 +42,17 @@ export default function TodoList() {
             <SearchBar />
             <SortDropdown />
           </div>
-
-          <ul>
-            {todos.map((todo) => (
-              <TodoItem key={todo.id} todo={todo} handleEdit={handleEdit} />
-            ))}
-          </ul>
+          {isLoading || isFetching ? (
+            <div className="flex justify-center py-12">
+              <span className="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+          ) : (
+            <ul>
+              {todos.map((todo) => (
+                <TodoItem key={todo._id} todo={todo} handleEdit={handleEdit} />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 

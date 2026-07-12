@@ -1,7 +1,7 @@
-import useTodos from "../hooks/useTodos";
+import { useTodoParams } from "../hooks/useUrlParams";
 
 export default function SearchBar() {
-  const { searchQuery, setSearchQuery } = useTodos();
+  const { searchQuery, setSearchQuery } = useTodoParams();
 
   return (
     <form action="">

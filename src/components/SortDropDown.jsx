@@ -1,4 +1,4 @@
-import useTodos from "../hooks/useTodos";
+import { useTodoParams } from "../hooks/useUrlParams";
 
 const sortOptions = [
   {
@@ -19,7 +19,7 @@ const sortOptions = [
 ];
 
 export default function SortDropdown() {
-  const { setSortBy } = useTodos();
+  const { setSortBy } = useTodoParams();
   return (
     <div className="dropdown">
       <button tabIndex={0} className="btn btn-primary m-1">

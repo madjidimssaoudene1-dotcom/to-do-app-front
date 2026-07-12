@@ -3,13 +3,13 @@ import { toggleTheme } from "../app/slices/themeSlice";
 import { useCallback } from "react";
 
 export default function useTheme() {
-const { theme } = useSelector((state) => state.theme);
-const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
 
-const toggleThemeFunction = useCallback(
+  const toggleThemeFunction = useCallback(
     () => dispatch(toggleTheme()),
     [dispatch],
-);
+  );
 
-return { theme, toggleTheme: toggleThemeFunction };
+  return { theme, toggleTheme: toggleThemeFunction };
 }

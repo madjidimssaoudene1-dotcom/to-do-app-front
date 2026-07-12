@@ -1,13 +1,21 @@
 import { useState } from "react";
-import useTodos from "../hooks/useTodos";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createTodo } from "../api/endpoints/todos";
 
 export default function AddTodo() {
-  const { addTodo } = useTodos();
+  const queryClient = useQueryClient();
+
+  // const { addTodo } = useTodos();
+  const { mutate: addTodo, isPending } = useMutation({
+    mutationFn: createTodo,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["todos"] }),
+  });
 
   const [newTodoText, setNewTodoText] = useState("");
 
   const handleAddTodo = () => {
     if (newTodoText.trim()) {
+      console.log(newTodoText);
       addTodo(newTodoText);
       setNewTodoText("");
     }
@@ -31,7 +39,11 @@ export default function AddTodo() {
           onClick={handleAddTodo}
           className="btn btn-circle btn-sm btn-ghost border border-zinc-500"
         >
-          <span className="icon-[iwwa--add] text-base-content"></span>
+          {isPending ? (
+            <span className="loading loading-spinner loading-xs"></span>
+          ) : (
+            <span className="icon-[iwwa--add] text-base-content"></span>
+          )}
         </button>
       </form>
     </div>
