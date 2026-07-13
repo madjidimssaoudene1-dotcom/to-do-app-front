@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router";
 import AuthInitializer from "./Provider/AuthInitializer.jsx";
 import store from "./app/store.js";
 
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
