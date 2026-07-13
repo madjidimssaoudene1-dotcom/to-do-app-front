@@ -1,4 +1,4 @@
-import TodoList from "./temp2";
+import TodoList from "./TodoList";
 import Filters from "./Filters";
 import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "../api/endpoints/todos";

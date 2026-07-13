@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import AddTodo from "./AddTodo";
 import EditModal from "./EditModal";
-import TodoItem from "./temp1";
+import TodoItem from "./TodoItem";
 import SortDropdown from "./SortDropdown";
 import SearchBar from "./SearchBar";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
