@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import AddTodo from "./AddTodo";
+import AddToDo from "./AddToDo";
 import EditModal from "./EditModal";
 import TodoItem from "./TodoItem";
 import SortDropDown from "./SortDropDown";
