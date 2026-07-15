@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import AddToDo from "./AddToDo";
+import AddTodo from "./AddTodo";
 import EditModal from "./EditModal";
 import TodoItem from "./TodoItem";
-import SortDropDown from "./SortDropDown";
+import SortDropdown from "./SortDropdown";
 import SearchBar from "./SearchBar";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateTodo } from "../api/endpoints/todos";

@@ -3,11 +3,10 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { Provider } from "react-redux";
+import { store } from "./app/store.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router";
 import AuthInitializer from "./Provider/AuthInitializer.jsx";
-import store from "./app/store.js";
-
 
 const queryClient = new QueryClient({
   defaultOptions: {
